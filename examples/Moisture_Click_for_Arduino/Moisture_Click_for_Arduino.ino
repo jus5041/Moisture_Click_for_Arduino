@@ -15,7 +15,7 @@ void setup() {
   
   // ### Start serial
   Serial.begin(115200);
-  Serial.println("\FDC2112 test");
+  Serial.println("Moisture Click Test");
   
   // ### Start FDC
   bool capOk = capsense.begin();
@@ -49,8 +49,8 @@ void moisture_cal ()
     flag = true;
 }
 
-
-void loop() {
+void moisture_get_data()
+{
   unsigned long capa; // variable to store data from FDC
   uint8_t n_cnt;
   uint32_t rx_data = 0;
@@ -79,6 +79,11 @@ void loop() {
   
   moisture = ( uint8_t )clc_data;
 
+  log_print(rx_data, moisture_data, moisture);
+}
+
+void log_print(uint32_t rx_data, int16_t moisture_data, uint8_t moisture)
+{
   Serial.print("calib_air_data : "); 
   Serial.print(calib_air_data); 
   Serial.print(" / rx_data : "); 
@@ -88,5 +93,11 @@ void loop() {
   Serial.print(" / last_moisture : "); 
   Serial.print(moisture); 
   Serial.println("%"); 
-    
+}
+
+
+void loop() {
+  
+  moisture_get_data();
+
 }
