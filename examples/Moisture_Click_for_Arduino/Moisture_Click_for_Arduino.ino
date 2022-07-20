@@ -99,5 +99,6 @@ void log_print(uint32_t rx_data, int16_t moisture_data, uint8_t moisture)
 void loop() {
   
   moisture_get_data();
+  delay(10); // test
 
 }
