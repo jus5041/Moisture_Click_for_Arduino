@@ -100,6 +100,6 @@ void loop() {
   
   moisture_get_data();
   delay(10); // test
-  delay(10); // test_2
+  delay(10); // test_2 delay(10); // test_2
 
 }
